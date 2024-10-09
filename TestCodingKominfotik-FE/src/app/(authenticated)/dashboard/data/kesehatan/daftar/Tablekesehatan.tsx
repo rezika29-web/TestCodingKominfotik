@@ -119,7 +119,7 @@ const CustomPagination: React.FC<PaginationProps> = (props) => {
     </ConfigProvider>
   );
 };
-const TablePasien: React.FC = () => {
+const TableKesehatan: React.FC = () => {
   const router = useRouter();
   const [data, setData] = useState<DataType[]>([]);
   const [totalItems, setTotalItems] = useState(0);
@@ -132,7 +132,7 @@ const TablePasien: React.FC = () => {
 
   const fetchData = async (page: number, size: number) => {
     try {
-      const response = await api.get(`/pasien?page=${page}&pageSize=${size}`);
+      const response = await api.get(`/kesehatan?page=${page}&pageSize=${size}`);
       
       console.log("respose",response.data);
       const roles  = response.data;
@@ -142,15 +142,11 @@ const TablePasien: React.FC = () => {
         // key: ((page - 1) * size + index + 1).toString(),
         key: index.toString(),
         id: item.id,
-        nik: item.nik,
-        nama: item.nama,
-        tempatlahir: item.tempatlahir,
-        tgllahir: item.tgllahir,
-        provinsi: item.provinsi,
-        kabkot: item.kabkot,
-        kec: item.kec,
-        kel: item.kel,
-        alamat: item.alamat,
+        id_pasien: item.id_pasien,
+        rincian_gejala: item.rincian_gejala,
+        diagnosa: item.diagnosa,
+        test_yg_dilakukan: item.test_yg_dilakukan,
+        status_diagnosa: item.status_diagnosa,
       }));
       setData(roles);
       console.log("format", formattedData);
@@ -172,14 +168,30 @@ const TablePasien: React.FC = () => {
       key: "no",
     },
     {
-      title: "NIK Pasien",
-      dataIndex: "nik",
-      key: "nik",
+      title: "NAMA Pasien",
+      dataIndex: "id_pasien",
+      key: "id_pasien",
     },
     {
-      title: "NAMA Pasien",
-      dataIndex: "nama",
-      key: "nama",
+      title: "Rincian Gejala",
+      dataIndex: "rincian_gejala",
+      key: "rincian_gejala",
+    },
+    {
+      title: "Diagnosa",
+      dataIndex: "diagnosa",
+      key: "diagnosa",
+    },
+    {
+      title: "Test Yang Dilakukan",
+      dataIndex: "test_yg_dilakukan",
+      key: "test_yg_dilakukan",
+    },
+
+    {
+      title: "Status Diagnosa",
+      dataIndex: "status_diagnosa",
+      key: "status_diagnosa",
     },
     {
       title: "KETERANGAN",
@@ -203,7 +215,7 @@ const TablePasien: React.FC = () => {
     },
   ];
   const handleEdit = (id: string) => {
-    router.push(`/dashboard/data/pasien/edit/${id}`);
+    router.push(`/dashboard/data/kesehatan/edit/${id}`);
     // Implement edit logic here
   };
   const handleDelete = (key: string) => {
@@ -218,27 +230,27 @@ const TablePasien: React.FC = () => {
 
     Modal.confirm({
       title: "Konfirmasi",
-      content: `Apakah Anda yakin ingin menghapus pasien "${itemToDelete.nama}"?`,
+      content: `Apakah Anda yakin ingin menghapus kesehatan "${itemToDelete.nama}"?`,
       okText: "Ya, Hapus",
       cancelText: "Batal",
       onOk: async () => {
         try {
           // Kirim permintaan DELETE ke API
-          const response = await api.delete(`/pasien/${itemToDelete.id}`);
+          const response = await api.delete(`/kesehatan/${itemToDelete.id}`);
 
           if (response.status === 200) {
-            message.success("pasien berhasil dihapus");
+            message.success("kesehatan berhasil dihapus");
             // Hapus item dari state setelah berhasil dihapus
             setData((prevData) =>
               prevData.filter((item: { key: string }) => item.key !== key)
             );
             window.location.reload
           } else {
-            message.error("Gagal menghapus pasien");
+            message.error("Gagal menghapus kesehatan");
           }
         } catch (error) {
-          console.error("Error deleting pasien:", error);
-          message.error("Terjadi kesalahan saat menghapus pasien");
+          console.error("Error deleting kesehatan:", error);
+          message.error("Terjadi kesalahan saat menghapus kesehatan");
         }
       },
     });
@@ -246,7 +258,7 @@ const TablePasien: React.FC = () => {
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-4xl font-bold">Pasien</h1>
+        <h1 className="text-4xl font-bold">Data Kesehatan</h1>
         <div className="space-x-2">
           <CustomButton className="text-[#2E7628] bg-white border border-gray-300 hover:bg-gray-100">
             Import Data
@@ -256,7 +268,7 @@ const TablePasien: React.FC = () => {
           </CustomButton>
           <CustomButton
             className="text-white bg-[#2E7628] hover:bg-green-700"
-            onClick={() => router.push("/dashboard/data/pasien/tambah")}
+            onClick={() => router.push("/dashboard/data/kesehatan/tambah")}
           >
             + Tambah Baru
           </CustomButton>
@@ -293,7 +305,7 @@ const TablePasien: React.FC = () => {
     </div>
   );
 };
-export default TablePasien;
+export default TableKesehatan;
 function setData(arg0: (prevData: any) => any) {
   throw new Error("Function not implemented.");
 }

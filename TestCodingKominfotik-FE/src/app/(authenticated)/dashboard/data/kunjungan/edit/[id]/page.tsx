@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
 import type { FC } from 'react';
-import PasienForm from '@/components/Pasien/PasienForm';
+import KunjunganForm from '@/components/Pasien/KunjunganForm';
 
 export const metadata: Metadata = {
-  title: 'Edit Pasien',
+  title: 'Edit Kunjungan Pasien',
 }
 
 const Page: FC<{ params: { id: string } }> = ({ params }) => {
   const { id } = params;
 
-  return <PasienForm mode="edit" id={id} />
+  return <KunjunganForm mode="edit" id={id} />
 }
 
 export default Page

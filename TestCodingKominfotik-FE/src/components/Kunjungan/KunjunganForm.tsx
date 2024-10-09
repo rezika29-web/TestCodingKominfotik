@@ -23,13 +23,13 @@ import moment from "moment";
 
 const { Title } = Typography;
 
-interface PasienFormProps {
+interface KunjunganFormProps {
   id?: string;
   mode: "add" | "edit";
 }
 const { Option } = Select;
 
-const PasienForm: React.FC<PasienFormProps> = ({ id, mode }) => {
+const KunjunganForm: React.FC<KunjunganFormProps> = ({ id, mode }) => {
   const router = useRouter();
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
@@ -164,7 +164,7 @@ const PasienForm: React.FC<PasienFormProps> = ({ id, mode }) => {
             />
           </Link>
           <Title level={4} style={{ margin: 0 }}>
-            Tambah Pasien
+            Tambah Data Kunjungan Pasien
           </Title>
         </div>
         <Card
@@ -196,7 +196,7 @@ const PasienForm: React.FC<PasienFormProps> = ({ id, mode }) => {
               ...initialData,
               tgllahir: initialData?.tgllahir ? moment(initialData.tgllahir, "YYYY-MM-DD") : null,
             }}
-            id="pasienForm"
+            id="kunjunganForm"
           >
             <Row gutter={16}>
               <Col span={12}>
@@ -391,7 +391,7 @@ const PasienForm: React.FC<PasienFormProps> = ({ id, mode }) => {
           style={{ float: "right", marginTop: "16px" }}
           loading={loading}
           disabled={!!success}
-          form="pasienForm"
+          form="kunjunganForm"
         >
           Simpan
         </Button>
@@ -400,4 +400,4 @@ const PasienForm: React.FC<PasienFormProps> = ({ id, mode }) => {
   );
 };
 
-export default PasienForm;
+export default KunjunganForm;
