@@ -1,0 +1,10 @@
+/* styles.module.scss */
+.InputNumber {
+  :global {
+    
+    .ant-input-number-group .ant-input-number {
+      height: 56px;
+      padding: 12px 0;
+    }
+  }
+}

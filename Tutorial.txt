@@ -1,0 +1,9 @@
+1.clone project
+2. masuk ke FE, kemudian install library, jalankan dengan yarn dev / npm dev, akses route = "localhost:4000/login"
+3. masuk ke BE, kemudian import database (klinikterpadu.sql), install library, jalankan xampp atau aplikasi sejenisnya, jalankan dengan yarn dev / npm dev
+
+
+
+catatan : 
+untuk BE sudah selesai
+untuk FE baru data pasien yang selesai

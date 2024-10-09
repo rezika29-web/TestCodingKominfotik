@@ -1,0 +1,22 @@
+{
+  "name": "yadika-be",
+  "version": "1.0.0",
+  "description": "project yadika-be",
+  "main": "index.js",
+  "author": "septian",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "moment": "^2.30.1",
+    "mysql2": "^3.4.5",
+    "nodemon": "^3.1.7",
+    "sequelize": "^6.32.1"
+  }
+}
