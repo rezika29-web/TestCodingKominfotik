@@ -126,11 +126,29 @@ const DashboardLayoutContent = ({
                           ),
                         },
                         {
+                          key: "pasien",
+                          // icon: <RotateRightOutlined />,
+                          label: (
+                            <Link href="/dashboard/data/pasien-copy/daftar">
+                              Pasien Saya
+                            </Link>
+                          ),
+                        },
+                        {
                           key: "kunjungan",
                           // icon: <AppstoreOutlined />,
                           label: (
                             <Link href="/dashboard/data/kunjungan/daftar">
                               Riwayat Kunjungan
+                            </Link>
+                          ),
+                        },
+                        {
+                          key: "kunjungan",
+                          // icon: <AppstoreOutlined />,
+                          label: (
+                            <Link href="/dashboard/data/kunjungansaya/daftar">
+                              Riwayat Kunjungan Saya
                             </Link>
                           ),
                         },
